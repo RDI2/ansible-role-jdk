@@ -1,0 +1,8 @@
+---
+# defaults file for jdk
+
+jdk_major_version: 8
+jdk_minor_version: 73
+jdk_version: "{{ jdk_major_version }}u{{ jdk_minor_version }}"
+jdk_version_suffix: b02
+jdk_url: http://download.oracle.com/otn-pub/java/jdk/{{ jdk_version }}-{{ jdk_version_suffix }}/jdk-{{ jdk_version }}-linux-x64.tar.gz

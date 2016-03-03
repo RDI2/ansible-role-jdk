@@ -1,0 +1,23 @@
+---
+# tasks file for jdk
+
+- name: download oracle java8 tarball
+  command: "wget --no-cookies --no-check-certificate --header='Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie' {{ jdk_url }}"
+  args:
+    chdir: /opt
+    creates: jdk-{{ jdk_version }}-linux-x64.tar.gz
+
+- name: extract java8 tarball
+  unarchive:
+    copy: no
+    src: /opt/jdk-{{ jdk_version }}-linux-x64.tar.gz
+    dest: /opt
+    creates: /opt/jdk1.{{ jdk_major_version }}.0_{{ jdk_minor_version }}
+
+- name: setup owner of java8 directory
+  file:
+    path: /opt/jdk1.{{ jdk_major_version }}.0_{{ jdk_minor_version }}
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
