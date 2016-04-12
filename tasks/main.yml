@@ -1,6 +1,9 @@
 ---
 # tasks file for jdk
 
+- name: install required packages
+  yum: name=wget state=present
+
 - name: check if already installed
   stat: path={{ jdk_prefix }}/bin
   register: jdk_bin

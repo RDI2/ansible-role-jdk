@@ -3,6 +3,8 @@
 
 
 - name: download oracle java8 tarball
+  # Need to use wget instead of get_url, because get_url does not support
+  # these options.
   command: "wget --no-cookies --no-check-certificate --header='Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie' {{ jdk_url }}"
   args:
     chdir: /tmp
